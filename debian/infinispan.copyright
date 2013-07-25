@@ -1,7 +1,7 @@
 Format: http://dep.debian.net/deps/dep5
-Upstream-Name: clearwater-infinispan
-Source: http://www.metaswitch.com/
+Upstream-Name: infinispan
+Source: http://www.jboss.org/infinispan/
 
 Files: *
-Copyright: Metaswitch Networks
-License: Proprietary
+Copyright: Red Hat Inc. and/or its affiliates
+License: Apache-2.0

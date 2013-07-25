@@ -1,0 +1,7 @@
+/changelog
+/*.log
+/*.debhelper
+/*.substvars
+/files
+/infinispan/
+/clearwater-infinispan/

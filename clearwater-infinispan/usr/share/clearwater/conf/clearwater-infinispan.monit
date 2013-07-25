@@ -1,0 +1,11 @@
+# Poll every 10 seconds
+set daemon 10
+
+# Monitor the server's PID file and check its public interfaces.
+check process infinispan pidfile /var/run/infinispan.pid
+  start program = "/etc/init.d/clearwater-infinispan start"
+  stop program = "/etc/init.d/clearwater-infinispan stop"
+  if failed host localhost port 11211
+    with timeout 15 seconds
+    for 3 times within 3 cycles
+    then restart
