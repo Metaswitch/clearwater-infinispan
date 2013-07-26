@@ -59,7 +59,7 @@ log_directory=/var/log/$NAME
 # Function to set up the user account for the daemon
 #
 setup_user() {
-    if ! grep -q "^$NAME:" /etc/passwd ; then useradd -M -d /nonexistent -s /bin/false $NAME ; fi
+    if ! grep -q "^$NAME:" /etc/passwd ; then useradd -M -d /nonexistent -s /bin/false --system $NAME ; fi
 }
 
 #
@@ -68,8 +68,8 @@ setup_user() {
 setup_data() {
     if [ ! -d "$data_directory" ]; then
         mkdir -p $data_directory
-	cp -R /usr/share/clearwater/infinispan/standalone/configuration $data_directory
-	cp $data_directory/configuration/clearwater.xml $data_directory/configuration/clustered.xml
+        cp -R /usr/share/clearwater/infinispan/standalone/configuration $data_directory
+        cp $data_directory/configuration/clearwater.xml $data_directory/configuration/clustered.xml
         chown -R $NAME $data_directory
     fi
 }

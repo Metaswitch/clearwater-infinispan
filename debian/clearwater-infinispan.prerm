@@ -81,9 +81,9 @@ case "$1" in
         rm -f /etc/monit/conf.d/clearwater-infinispan.monit
         service monit restart
         service clearwater-infinispan stop || /bin/true
-        remove_user
-        remove_data
         remove_logging
+        remove_data
+        remove_user
     ;;
 
     upgrade|deconfigure)

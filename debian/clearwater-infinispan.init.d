@@ -76,7 +76,7 @@ do_start()
                 || return 1
 
         # daemon is not running, so attempt to start it.
-	DAEMON_ARGS="-Djboss.server.base.dir=/var/lib/infinispan -Djboss.server.log.dir=/var/log/infinispan"
+        DAEMON_ARGS="-Djboss.server.base.dir=/var/lib/infinispan -Djboss.server.log.dir=/var/log/infinispan"
         start-stop-daemon --start --quiet --background --make-pidfile --pidfile $PIDFILE --exec $DAEMON --chuid $NAME -- $DAEMON_ARGS \
                 || return 2
         # Add code here, if necessary, that waits for the process to be ready
@@ -92,7 +92,7 @@ do_start()
 do_stop()
 {
         # Look up children of the process we're tracking
-	child_pids=$(pgrep -P $(cat $PIDFILE))
+        child_pids=$(pgrep -P $(cat $PIDFILE))
 
         # Return
         #   0 if daemon has been stopped

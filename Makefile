@@ -14,11 +14,10 @@ infinispan-server-5.3.0.Final-bin.zip:
 	wget http://downloads.jboss.org/infinispan/5.3.0.Final/infinispan-server-5.3.0.Final-bin.zip
 
 infinispan-server-5.3.0.Final: infinispan-server-5.3.0.Final-bin.zip
-	rm -rf infinispan-server
+	rm -rf infinispan-server-5.3.0.Final
 	unzip infinispan-server-5.3.0.Final-bin.zip
 	touch infinispan-server-5.3.0.Final
 
-.PHONY: deb
 deb: infinispan-server-5.3.0.Final deb-only
 
 clean:
