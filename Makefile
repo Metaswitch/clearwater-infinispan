@@ -21,4 +21,7 @@ infinispan-server-5.3.0.Final: infinispan-server-5.3.0.Final-bin.zip
 .PHONY: deb
 deb: infinispan-server-5.3.0.Final deb-only
 
-.PHONY: all deb-only deb
+clean:
+	rm -rf infinispan-server-5.3.0.Final-bin.zip infinispan-server-5.3.0.Final
+
+.PHONY: all deb-only deb clean
