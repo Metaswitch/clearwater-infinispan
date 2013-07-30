@@ -92,7 +92,7 @@ do_start()
 do_stop()
 {
         # Look up children of the process we're tracking
-        child_pids=$(pgrep -P $(cat $PIDFILE))
+        child_pids=$([ ! -f $PIDFILE ] || pgrep -P $(cat $PIDFILE))
 
         # Return
         #   0 if daemon has been stopped
@@ -105,6 +105,7 @@ do_stop()
 
         # Now kill the children.
         [ -z "$child_pids" ] || kill $child_pids
+        rm -f $PIDFILE
 
         return 0;
 }
