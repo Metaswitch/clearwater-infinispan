@@ -7,5 +7,5 @@ check process infinispan pidfile /var/run/infinispan.pid
   stop program = "/etc/init.d/clearwater-infinispan stop"
   if failed host localhost port 11211
     with timeout 15 seconds
-    for 3 times within 3 cycles
+    for 6 times within 6 cycles
     then restart
