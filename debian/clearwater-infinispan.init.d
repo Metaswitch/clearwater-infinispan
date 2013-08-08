@@ -68,6 +68,11 @@ SCRIPTNAME=/etc/init.d/clearwater-infinispan
 #
 do_start()
 {
+        # If this is an all-in-one node, reduce our memory usage so we don't conflict with Cassandra
+        if [ -e /usr/bin/cassandra-cli ]; then
+          sed -i "s/-Xms1303m -Xmx1303m -XX:MaxPermSize=256m/-Xms256m -Xmx256m -XX:MaxPermSize=128m/" /usr/share/clearwater/infinispan/bin/clustered.conf
+        fi
+
         # Return
         #   0 if daemon has been started
         #   1 if daemon was already running
