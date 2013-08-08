@@ -69,7 +69,8 @@ SCRIPTNAME=/etc/init.d/clearwater-infinispan
 do_start()
 {
         # If this is an all-in-one node, reduce our memory usage so we don't conflict with Cassandra
-        if [ $(dpkg-query -W -f='${PackageSpec}\n' | egrep '^(bono|ellis|homer|homestead|sprout)$' | wc -l) -eq 5 ]; then
+        if [ $(dpkg-query -W -f='${PackageSpec}\n' | egrep '^(bono|ellis|homer|homestead|sprout)$' | wc -l) -eq 5 ]
+          then
           sed -i "s/-Xms1303m -Xmx1303m -XX:MaxPermSize=256m/-Xms256m -Xmx256m -XX:MaxPermSize=128m/" /usr/share/clearwater/infinispan/bin/clustered.conf
         fi
 
