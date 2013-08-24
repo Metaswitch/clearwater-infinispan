@@ -10,7 +10,7 @@ DEB_ARCH := all
 
 include build-infra/cw-deb.mk
 
-infinispan-5.2.1.Final-bin.zip:
+infinispan-5.2.1.Final-all.zip:
   wget http://downloads.jboss.org/infinispan/5.2.1.Final/infinispan-5.2.1.Final-all.zip
 
 infinispan-5.2.1.Final: infinispan-5.2.1.Final-all.zip
