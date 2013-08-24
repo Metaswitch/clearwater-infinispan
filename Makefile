@@ -10,17 +10,17 @@ DEB_ARCH := all
 
 include build-infra/cw-deb.mk
 
-infinispan-server-5.3.0.Final-bin.zip:
-	wget http://downloads.jboss.org/infinispan/5.3.0.Final/infinispan-server-5.3.0.Final-bin.zip
+infinispan-5.2.1.Final-bin.zip:
+  wget http://downloads.jboss.org/infinispan/5.2.1.Final/infinispan-5.2.1.Final-all.zip
 
-infinispan-server-5.3.0.Final: infinispan-server-5.3.0.Final-bin.zip
-	rm -rf infinispan-server-5.3.0.Final
-	unzip infinispan-server-5.3.0.Final-bin.zip
-	touch infinispan-server-5.3.0.Final
+infinispan-5.2.1.Final: infinispan-5.2.1.Final-all.zip
+	rm -rf infinispan-5.2.1.Final
+	unzip infinispan-5.2.1.Final-all.zip
+	touch infinispan-5.2.1.Final
 
-deb: infinispan-server-5.3.0.Final deb-only
+deb: infinispan-5.2.1.Final deb-only
 
 clean:
-	rm -rf infinispan-server-5.3.0.Final-bin.zip infinispan-server-5.3.0.Final
+	rm -rf infinispan-5.2.1.Final-all.zip infinispan-5.2.1.Final
 
 .PHONY: all deb-only deb clean

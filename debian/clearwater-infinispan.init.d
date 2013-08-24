@@ -49,7 +49,7 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC=clearwater-infinispan             # Introduce a short description here
 NAME=infinispan                        # Introduce the short server's name here
 PIDFILE=/var/run/$NAME.pid
-EXECNAME=clustered.sh
+EXECNAME=runMemcached.sh
 DAEMON=/usr/share/clearwater/infinispan/bin/$EXECNAME
 SCRIPTNAME=/etc/init.d/clearwater-infinispan
 
@@ -69,10 +69,10 @@ SCRIPTNAME=/etc/init.d/clearwater-infinispan
 do_start()
 {
         # If this is an all-in-one node, reduce our memory usage so we don't conflict with Cassandra
-        if [ $(dpkg-query -W -f='${PackageSpec}\n' | egrep '^(bono|ellis|homer|homestead|sprout)$' | wc -l) -eq 5 ]
-          then
-          sed -i "s/-Xms1303m -Xmx1303m -XX:MaxPermSize=256m/-Xms256m -Xmx256m -XX:MaxPermSize=128m/" /usr/share/clearwater/infinispan/bin/clustered.conf
-        fi
+        #if [ $(dpkg-query -W -f='${PackageSpec}\n' | egrep '^(bono|ellis|homer|homestead|sprout)$' | wc -l) -eq 5 ]
+        #  then
+        #  sed -i "s/-Xms1303m -Xmx1303m -XX:MaxPermSize=256m/-Xms256m -Xmx256m -XX:MaxPermSize=128m/" /usr/share/clearwater/infinispan/bin/clustered.conf
+        #fi
 
         # Return
         #   0 if daemon has been started
@@ -82,8 +82,8 @@ do_start()
                 || return 1
 
         # daemon is not running, so attempt to start it.
-        DAEMON_ARGS="-Djboss.server.base.dir=/var/lib/infinispan -Djboss.server.log.dir=/var/log/infinispan"
-        start-stop-daemon --start --quiet --background --make-pidfile --pidfile $PIDFILE --exec $DAEMON --chuid $NAME -- $DAEMON_ARGS \
+        export JVM_ARGS="-Djgroups.bind_addr=$private_ip"
+        start-stop-daemon --start --quiet --background --make-pidfile --pidfile $PIDFILE --exec $DAEMON --chuid $NAME \
                 || return 2
         # Add code here, if necessary, that waits for the process to be ready
         # to handle requests from services started subsequently which depend
