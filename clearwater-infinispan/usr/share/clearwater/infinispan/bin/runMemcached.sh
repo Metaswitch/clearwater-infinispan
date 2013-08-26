@@ -2,7 +2,7 @@
 
 source "`dirname "$0"`/functions.sh"
 
-add_classpath ${ISPN_HOME}/etc
+#add_classpath ${ISPN_HOME}/etc
 add_classpath ${ISPN_HOME}/modules/memcached/*.jar
 add_classpath ${ISPN_HOME}/modules/hotrod/*.jar
 add_classpath ${ISPN_HOME}/modules/websocket/*.jar
@@ -29,7 +29,7 @@ add_jvm_args '-Dsun.nio.ch.bugLevel=""'
 #add_jvm_args "-Xrunjdwp:transport=dt_socket,address=8686,server=y,suspend=n"
 
 # LOG4J configuration
-# LOG4J_CONFIG=file:///${ISPN_HOME}/etc/log4j.xml
+LOG4J_CONFIG=file:///var/lib/infinispan/etc/clearwater/log4j.xml
 
 add_program_args -c "/var/lib/infinispan/etc/clearwater/cache-config.xml" -r memcached -p 11211
 
