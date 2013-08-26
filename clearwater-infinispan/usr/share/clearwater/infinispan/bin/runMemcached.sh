@@ -20,7 +20,7 @@ add_jvm_args '-Djava.net.preferIPv4Stack=true'
 add_jvm_args '-Dcom.sun.management.jmxremote.ssl=false'
 add_jvm_args '-Dcom.sun.management.jmxremote.authenticate=false'
 add_jvm_args -Dcom.sun.management.jmxremote.port=$(find_tcp_port)
-add_jvm_args -DCFGPath=/var/lib/infinispan/etc
+add_jvm_args -DCFGPath=/var/lib/infinispan/etc/clearwater
 
 # Workaround for JDK6 NPE: http://bugs.sun.com/view_bug.do?bug_id=6427854
 add_jvm_args '-Dsun.nio.ch.bugLevel=""'
@@ -31,6 +31,6 @@ add_jvm_args '-Dsun.nio.ch.bugLevel=""'
 # LOG4J configuration
 # LOG4J_CONFIG=file:///${ISPN_HOME}/etc/log4j.xml
 
-add_program_args -c "/var/lib/infinispan/etc/cache-config.xml" -r memcached -p 11211
+add_program_args -c "/var/lib/infinispan/etc/clearwater/cache-config.xml" -r memcached -p 11211
 
 start org.infinispan.server.core.Main

@@ -52,7 +52,7 @@ set -e
 # the debian-policy package
 
 NAME=infinispan
-data_directory=/var/lib/$NAME/etc
+data_directory=/var/lib/$NAME/etc/clearwater
 log_directory=/var/log/$NAME
 
 #
@@ -68,8 +68,8 @@ setup_user() {
 setup_data() {
     if [ ! -d "$data_directory" ]; then
         mkdir -p $data_directory
-        cp -R /usr/share/clearwater/infinispan/etc $data_directory
-        chown -R $NAME $data_directory
+        cp /usr/share/clearwater/infinispan/etc/clearwater/* $data_directory
+        chown $NAME $data_directory
     fi
 }
 
@@ -88,6 +88,7 @@ case "$1" in
         setup_user
         setup_data
         setup_logging
+        chmod +x /usr/share/clearwater/infinispan/bin/runMemcached.sh
         # Create a symlink from infinispan's configuration directory to our (writable) history directory.
         install -D --mode=0644 /usr/share/clearwater/conf/clearwater-infinispan.monit /etc/monit/conf.d/
         service monit reload

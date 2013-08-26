@@ -82,7 +82,8 @@ do_start()
                 || return 1
 
         # daemon is not running, so attempt to start it.
-        export JVM_ARGS="-Djgroups.bind_addr=$private_ip"
+        . /etc/clearwater/config
+        export JVM_PARAMS="-Djgroups.bind_addr=$private_ip"
         start-stop-daemon --start --quiet --background --make-pidfile --pidfile $PIDFILE --exec $DAEMON --chuid $NAME \
                 || return 2
         # Add code here, if necessary, that waits for the process to be ready

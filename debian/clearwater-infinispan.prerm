@@ -51,7 +51,7 @@ set -e
 # the debian-policy package
 
 NAME=infinispan
-data_directory=/var/lib/$NAME/etc
+data_directory=/var/lib/$NAME/etc/clearwater
 log_directory=/var/log/$NAME
 
 #
