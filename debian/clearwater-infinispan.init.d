@@ -111,7 +111,7 @@ do_stop()
         [ "$RETVAL" = 2 ] && return 2
 
         # Now kill the children.
-        [ -z "$child_pids" ] || kill $child_pids
+        [ -z "$child_pids" ] || kill -KILL $child_pids
         rm -f $PIDFILE
 
         return 0;
