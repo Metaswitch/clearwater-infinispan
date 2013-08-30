@@ -17,4 +17,6 @@ Description: Infinispan, an extremely scalable, highly available key/value NoSQL
 Package: clearwater-infinispan
 Architecture: all
 Depends: clearwater-infrastructure, infinispan
+Conflicts: clearwater-memcached
+Suggests: clearwater-secure-connections
 Description: Infinispan configured for Clearwater
