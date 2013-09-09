@@ -31,6 +31,7 @@ add_jvm_args '-Dsun.nio.ch.bugLevel=""'
 # LOG4J configuration
 LOG4J_CONFIG=file:///var/lib/infinispan/etc/clearwater/log4j.xml
 
-add_program_args -c "/var/lib/infinispan/etc/clearwater/cache-config.xml" -r memcached -p 11211
+source /etc/clearwater/config
+add_program_args -c "/var/lib/infinispan/etc/clearwater/cache-config.xml" -r memcached -p 11211 -l $local_ip
 
 start org.infinispan.server.core.Main
